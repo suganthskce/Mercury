@@ -5,11 +5,15 @@ import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
 import Home from './pages/home'
 import Login from './pages/login'
+import Default from './pages/default'
 
 const routing = (
     <Router>
         <div>
             <ul>
+                <li>
+                    <Link to="/remainder">Default</Link>
+                </li>
                 <li>
                     <Link to="/remainder/home">Home</Link>
                 </li>
@@ -17,6 +21,7 @@ const routing = (
                     <Link to="/remainder/login">Login</Link>
                 </li>
             </ul>
+            <Route exact path="/remainder" component={Default} />
             <Route path="/remainder/home" component={Home} />
             <Route path="/remainder/login" component={Login} />
         </div>
