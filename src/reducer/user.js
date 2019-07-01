@@ -20,9 +20,10 @@ export default function user(state = defaultState, action) {
     switch (action.type) {
 
         case "USER_LOGIN_SUCCESS": {
-            const { user } = action.payload;
-            const { accessToken } = action.payload;
-            const userInfo = { ...user, accessToken };
+            const { payload } = action.payload;
+            const { userInfo } = payload;
+            const { token = '' } = userInfo;
+            saveToCookie(token);
             return {
                 ...state,
                 userInfo: userInfo,

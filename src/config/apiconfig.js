@@ -1,6 +1,6 @@
 const ApiConfig = {
     login: {
-        url: "/ums/v1/sign-in",
+        url: "/rms/sign-in",
         method: "POST",
         server: "rms_srv"
     },

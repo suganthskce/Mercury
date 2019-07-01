@@ -2,6 +2,7 @@
 import Cookie from "react-cookies";
 import jwtDecode from "jwt-decode";
 import _ from 'lodash';
+import { notify } from 'react-notify-toast';
 
 
 export const getUserInfoFromJwt = () => {
@@ -17,7 +18,7 @@ export const getUserInfoFromJwt = () => {
  * Return the JWT Bearer token
  */
 export const getAuthorizedToken = (id = 'uuid') => {
-    return `${Cookie.load(id)}`;
+    return Cookie.load(id);
 };
 
 // saves token to cookie
@@ -25,14 +26,25 @@ export const saveToCookie = (token, removeOld) => {
     const decodeJWT = jwtDecode(token.replace("Bearer ", ""));
     const { exp = "" } = decodeJWT;
     const expires = new Date((exp - 300) * 1000);
-    const cookieDomain = 'suganth.com';
+    const cookieDomain = 'localhost';
     Cookie.save("uuid", token, { path: "/", expires, domain: cookieDomain });
     if (removeOld) Cookie.remove(removeOld, { path: '/', domain: cookieDomain });
 };
 
+/**
+ * @description it is specific to show notification toaster
+ * @param message
+ */
+export const errorToaster = (msg, timePeriod, msgType) => {
+    if (msgType)
+        notify.show(msg, msgType, timePeriod ? timePeriod : 4000);
+    else
+        notify.show(msg, "error", timePeriod ? timePeriod : 4000);
+}
+
 
 export default {
-    getUserInfoFromJwt,
+    getUserInfoFromJwt, errorToaster,
     getAuthorizedToken,
     saveToCookie
 };

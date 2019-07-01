@@ -4,6 +4,7 @@ import './style.css';
 import Notifications, { notify } from 'react-notify-toast';
 import { bindActionCreators } from "redux";
 import { loginUser } from "./../../actions/userActions";
+import { getAuthorizedToken, errorToaster } from './../../utils/utils';
 
 class Login extends Component {
     constructor(props) {
@@ -23,12 +24,29 @@ class Login extends Component {
         });
     }
 
+    componentWillMount() {
+        const token = getAuthorizedToken();
+        if (token) {
+            window.location.href = "/remainder/home";
+        }
+    }
+
+    componentWillReceiveProps = (newProps) => {
+        if (newProps.success) {
+            window.location.href = "/remainder/home";
+        } else if (newProps.errors.length > 0) {
+            newProps.errors.map((error) => {
+                let err = error.message;
+                errorToaster(err);
+            })
+        }
+    }
+
     handleSubmit = () => {
         const { username = '', password = '' } = this.state;
         if (!username || !password) {
             alert("Enter username and password");
         } else {
-            console.log("Do login");
             this.props.dispatch(loginUser({ username, password }));
         }
     }
@@ -36,6 +54,7 @@ class Login extends Component {
     render() {
         return (
             <div className="body_wrapper">
+                <Notifications />
                 <div className="form_container">
                     <form>
                         <div className="imgcontainer">

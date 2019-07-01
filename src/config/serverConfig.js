@@ -2,7 +2,7 @@
 const ServerConfig = {
     rms_srv: {
         protocol: "http",
-        server: "localhost"
+        server: "dev.technogramsolutions.com:8080"
     },
 };
 

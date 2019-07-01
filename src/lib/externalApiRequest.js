@@ -52,6 +52,7 @@ const setAuthorizationHeader = () => {
         "browserName": browser.name,
         "browserVersion": browser.version,
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: authorizationToken,
     };
 };
@@ -104,13 +105,14 @@ const sanitizeResponse = (response = {}) => {
             errorData.error = true;
             setTimeout(() => {
                 if (!isEmpty(data.errors) && data.errors[0].errCode == "403") {
-                    const cookieDomain = 'suganth.com';
+                    const cookieDomain = 'localhost';
                     Cookie.remove("uuid", { path: '/', domain: cookieDomain });
                     Cookie.remove("SBT", { path: '/', domain: cookieDomain });
                     sessionStorage.clear();
                     window.location.href = '/remainder/login/';
                 }
             }, 2000)
+            console.log("errorData", errorData);
             return errorData;
             //handle false condition like 403, 400, 500, 502
         }
