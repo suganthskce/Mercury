@@ -5,16 +5,20 @@ const ApiConfig = {
         server: "rms_srv"
     },
     register: {
-        url: '/ums/v1/register',
+        url: '/rms/register',
         method: 'POST',
-        server: 'ums_srv'
+        server: 'rms_srv'
     },
     forget: {
         url: '/ums/v1/reset-password',
         method: 'POST',
-        server: 'ums_srv'
+        server: 'rms_srv'
     },
-
+    eventList: {
+        url: '/rms/event/list',
+        method: 'POST',
+        server: 'rms_srv'
+    }
 };
 
 export default ApiConfig;

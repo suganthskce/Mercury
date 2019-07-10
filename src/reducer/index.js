@@ -1,5 +1,6 @@
 import { persistCombineReducers } from 'redux-persist'
 import user from "./user";
+import events from "./events";
 
 import storage from 'redux-persist/es/storage'
 const storeConfig = {
@@ -10,6 +11,7 @@ const storeConfig = {
 };
 const allReducers = persistCombineReducers(storeConfig, {
     user: user,
+    events: events,
 });
 
 

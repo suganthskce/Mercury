@@ -1,26 +1,33 @@
+
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import './style.css';
+import './style.less';
 import Notifications, { notify } from 'react-notify-toast';
 import { bindActionCreators } from "redux";
 import { loginUser } from "./../../actions/userActions";
 import { getAuthorizedToken, errorToaster } from './../../utils/utils';
 import InputBox from './../../components/inputBox';
 
-class Login extends Component {
+class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            fname: '',
+            lname: '',
+            mobile: '',
             username: '',
-            password: ''
+            password: '',
+            dob: '',
+            gender: ''
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange = (key, value) => {
+    handleChange = (e) => {
+        const { target: { value = '', name } } = e;
         this.setState({
-            [key]: value
+            [name]: value
         });
     }
 
@@ -47,7 +54,7 @@ class Login extends Component {
         if (!username || !password) {
             alert("Enter username and password");
         } else {
-            this.props.loginUser({ username, password });
+            this.props.dispatch(loginUser({ username, password }));
         }
     }
 
@@ -69,17 +76,34 @@ class Login extends Component {
                                 value={this.state.username}
                             />
                             <InputBox
-                                name={"password"}
-                                label={"Password"}
-                                placeholder={"Enter Password"}
+                                name={"username"}
+                                label={"Username"}
+                                placeholder={"Enter Username"}
                                 onChange={this.handleChange}
-                                value={this.state.password}
+                                value={this.state.username}
                             />
-                            <button type="button" onClick={this.handleSubmit}>Login</button>
-                        </div>
-                        <div className="container">
-                            <button type="button" className="cancelbtn">Forgot</button>
-                            <span className="psw">Forgot <a href="#">password?</a></span>
+                            <InputBox
+                                name={"username"}
+                                label={"Username"}
+                                placeholder={"Enter Username"}
+                                onChange={this.handleChange}
+                                value={this.state.username}
+                            />
+                            <InputBox
+                                name={"username"}
+                                label={"Username"}
+                                placeholder={"Enter Username"}
+                                onChange={this.handleChange}
+                                value={this.state.username}
+                            />
+                            <InputBox
+                                name={"username"}
+                                label={"Username"}
+                                placeholder={"Enter Username"}
+                                onChange={this.handleChange}
+                                value={this.state.username}
+                            />
+                            <button type="button" onClick={this.handleSubmit}>Register</button>
                         </div>
                     </form>
                 </div>
@@ -95,10 +119,11 @@ const mapStateToProps = state => ({
     userInfo: state.user.userInfo
 });
 
-const mapDispatchToProps = dispatch => ({
-    loginUser: (payload) => {
-        dispatch(loginUser(payload));
-    }
-});
+const mapDispatchToProps = dispatch => {
+    let actions = bindActionCreators({
+        loginUser: loginUser
+    });
+    return { actions, dispatch };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

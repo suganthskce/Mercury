@@ -1,0 +1,30 @@
+.header_wrapper {
+    height: 75px;
+    background-color: #e9e9e9;
+    padding: 20px 0px 10px 0px;
+  }
+  .header_wrapper > .floater_left {
+    float: left;
+    width: 50%;
+  }
+  .floater_left > .title{
+    padding-left: 30px;
+  }
+  .title >  .title_text{
+    font-size: 30px;
+  }
+  .header_wrapper > .floater_right {
+    padding: 10px 0px;
+    float: right;
+    position: initial;
+    width: 50%;
+  }
+  .floater_right > .floater_list {
+    position: absolute;
+    right: 30px;
+    top: 25px;
+  }
+  .floater_list > .header_list{
+    display: inline;
+    padding-right: 15px; 
+  }

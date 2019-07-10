@@ -1,8 +1,9 @@
 import React from 'react'
+import HomeContainer from './../containers/home';
 
 class Home extends React.Component {
     render() {
-        return <h1>Home</h1>
+        return <HomeContainer />
     }
 }
 export default Home;

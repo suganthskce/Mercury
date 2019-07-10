@@ -16,7 +16,7 @@ import thunk from "redux-thunk";
 //import * as serviceWorker from './serviceWorker';
 import Home from './pages/home'
 import Login from './pages/login'
-import Default from './pages/default'
+import Register from './pages/Register'
 
 
 
@@ -50,11 +50,11 @@ if ('serviceWorker' in navigator) {
 const isAuthenticatedArr = {
     LoginPage: <Login />,
     Home: <Home />,
-    Default: <Default />,
+    Register: <Register />,
 };
 const isAuthenticated = props => {
     if (Cookie.load("uuid") == undefined) {
-        Cookie.save('referrer', window.location.pathname);
+        //Cookie.save('referrer', window.location.pathname);
         window.location.href = '/remainder/login/';
     }
     return isAuthenticatedArr[props.componentName];
@@ -63,13 +63,13 @@ const isAuthenticated = props => {
 const nnnav = (show) => {
     return show ? <ul>
         <li>
-            <Link to="/remainder">Default</Link>
-        </li>
-        <li>
-            <Link to="/remainder/home">Home</Link>
+            <Link to="/remainder">Home</Link>
         </li>
         <li>
             <Link to="/remainder/login">Login</Link>
+        </li>
+        <li>
+            <Link to="/remainder/register">Register</Link>
         </li>
     </ul> : ''
 }
@@ -79,17 +79,12 @@ const routing = (
         <PersistGate persistor={persistor} loading={<LoadingStoreFromLocalStorage />} onBeforeLift={onBeforeLift}>
             <Router >
                 <div>
-                    {nnnav(true)}
+                    {nnnav(false)}
                     <Route path="/remainder/login" component={Login} />
+                    <Route path="/remainder/register" component={Register} />
                     <Route
                         exact
-                        path="/remainder/"
-                        component={props =>
-                            isAuthenticated({ componentName: "Default" })}
-                    />
-                    <Route
-                        exact
-                        path="/remainder/home/"
+                        path="/remainder"
                         component={props =>
                             isAuthenticated({ componentName: "Home" })}
                     />
