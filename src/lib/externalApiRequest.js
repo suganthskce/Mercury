@@ -81,7 +81,7 @@ const redirectToApi = url => {
  */
 const sanitizeResponse = (response = {}) => {
     const { data = {}, headers = {} } = response;
-    setJwtCookie(headers);
+    //setJwtCookie(headers);
     try {
         const { status = {}, errors } = data;
         const { success = false } = status;
@@ -105,11 +105,12 @@ const sanitizeResponse = (response = {}) => {
             errorData.error = true;
             setTimeout(() => {
                 if (!isEmpty(data.errors) && data.errors[0].errCode == "403") {
-                    const cookieDomain = 'localhost';
-                    Cookie.remove("uuid", { path: '/', domain: cookieDomain });
-                    Cookie.remove("SBT", { path: '/', domain: cookieDomain });
-                    sessionStorage.clear();
-                    window.location.href = '/remainder/login/';
+                    // const cookieDomain = 'localhost';
+                    // Cookie.remove("uuid", { path: '/', domain: cookieDomain });
+                    // Cookie.remove("SBT", { path: '/', domain: cookieDomain });
+                    // sessionStorage.clear();
+                    // alert("WSJSH");
+                    // window.location.href = '/remainder/login/';
                 }
             }, 2000)
             console.log("errorData", errorData);

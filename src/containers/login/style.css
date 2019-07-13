@@ -58,7 +58,7 @@ img.avatar {
 }
 
 /* Add padding to containers */
-.container {
+.login_container {
     background-color:#f1f1f1;
   padding: 16px;
 }

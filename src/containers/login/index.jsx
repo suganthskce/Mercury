@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import './style.css';
 import Notifications, { notify } from 'react-notify-toast';
-import { bindActionCreators } from "redux";
 import { loginUser } from "./../../actions/userActions";
 import { getAuthorizedToken, errorToaster } from './../../utils/utils';
 import InputBox from './../../components/inputBox';
@@ -60,7 +59,7 @@ class Login extends Component {
                         <div className="imgcontainer">
                             <img src="user.png" alt="Avatar" className="avatar" />
                         </div>
-                        <div className="container">
+                        <div className="login_container">
                             <InputBox
                                 name={"username"}
                                 label={"Username"}
@@ -77,7 +76,7 @@ class Login extends Component {
                             />
                             <button type="button" onClick={this.handleSubmit}>Login</button>
                         </div>
-                        <div className="container">
+                        <div className="login_container">
                             <button type="button" className="cancelbtn">Forgot</button>
                             <span className="psw">Forgot <a href="#">password?</a></span>
                         </div>

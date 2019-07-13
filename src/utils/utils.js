@@ -3,6 +3,7 @@ import Cookie from "react-cookies";
 import jwtDecode from "jwt-decode";
 import _ from 'lodash';
 import { notify } from 'react-notify-toast';
+import moment from "moment";
 
 
 export const getUserInfoFromJwt = () => {
@@ -26,7 +27,9 @@ export const saveToCookie = (token, removeOld) => {
     const decodeJWT = jwtDecode(token.replace("Bearer ", ""));
     const { exp = "" } = decodeJWT;
     const expires = new Date((exp - 300) * 1000);
-    const cookieDomain = 'localhost';
+    alert(JSON.stringify(decodeJWT));
+    alert(expires);
+    const cookieDomain = 'technogramsolutions.com';
     Cookie.save("uuid", token, { path: "/", expires, domain: cookieDomain });
     if (removeOld) Cookie.remove(removeOld, { path: '/', domain: cookieDomain });
 };
@@ -42,9 +45,14 @@ export const errorToaster = (msg, timePeriod, msgType) => {
         notify.show(msg, "error", timePeriod ? timePeriod : 4000);
 }
 
+export const transformDate = (date, oldFormat, newFormat) => {
+    if (date) {
+        return moment(date, oldFormat).format(newFormat);
+    }
+}
 
 export default {
     getUserInfoFromJwt, errorToaster,
     getAuthorizedToken,
-    saveToCookie
+    saveToCookie, transformDate
 };

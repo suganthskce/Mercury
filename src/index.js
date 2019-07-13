@@ -54,6 +54,7 @@ const isAuthenticatedArr = {
 };
 const isAuthenticated = props => {
     if (Cookie.load("uuid") == undefined) {
+        //alert("UUID not defined");
         //Cookie.save('referrer', window.location.pathname);
         window.location.href = '/remainder/login/';
     }

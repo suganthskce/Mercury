@@ -1,0 +1,52 @@
+.content_wrapper > .container{
+    float: right;
+    width: 85%;
+    height: 750px;
+    overflow: scroll;
+    padding: 20px;
+  }
+  .event_container {
+    padding: 10px;
+  }
+  .event_container > .wrapper {
+    border: 1px solid;
+    height: 20px;
+    border-radius: 30px;
+    box-shadow: 5px 10px 8px #888888;
+    padding: 15px 30px;
+  }
+  .wrapper > .wrapper_text {
+    float: left;
+    width: 75%;
+  }
+  .wrapper > .actions_container {
+    float: right;
+    width: 25%;
+    height: 100%;
+  }
+  .actions_container > i {
+    float: right;
+    padding-left: 25px;
+    cursor: pointer;
+  }
+  
+  i.delete {
+    color: red;
+  }
+i:hover::before{
+  box-shadow: 5px 10px 8px #888888;
+}
+
+  i.edit {
+    color: blue;
+  }
+  
+  i.send {
+    color: green;
+  }
+
+
+  .modal_container{
+    min-height: 200px;
+    min-width: 500px;
+  }
