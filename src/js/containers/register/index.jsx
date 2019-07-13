@@ -1,12 +1,11 @@
 
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import './style.less';
 import Notifications, { notify } from 'react-notify-toast';
 import { bindActionCreators } from "redux";
 import { loginUser } from "./../../actions/userActions";
 import { getAuthorizedToken, errorToaster } from './../../utils/utils';
-import InputBox from './../../components/inputBox';
+import InputBox from './../../components/inputBox/index.jsx';
 
 class Register extends Component {
     constructor(props) {
@@ -24,7 +23,7 @@ class Register extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange = (e) => {
+    handleChange(e) {
         const { target: { value = '', name } } = e;
         this.setState({
             [name]: value
@@ -38,7 +37,7 @@ class Register extends Component {
         }
     }
 
-    componentWillReceiveProps = (newProps) => {
+    componentWillReceiveProps(newProps) {
         if (newProps.success) {
             window.location.href = "/remainder";
         } else if (newProps.errors.length > 0) {
@@ -49,7 +48,7 @@ class Register extends Component {
         }
     }
 
-    handleSubmit = () => {
+    handleSubmit() {
         const { username = '', password = '' } = this.state;
         if (!username || !password) {
             alert("Enter username and password");

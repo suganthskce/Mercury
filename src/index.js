@@ -1,23 +1,21 @@
+import FormContainer from "./js/components/container/FormContainer.jsx";
+import SecondContainer from "./js/components/container/secondContainer.jsx";
+import { Provider } from "react-redux";
+import Cookie from "react-cookies";
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import Cookie from "react-cookies";
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
-import { Provider } from "react-redux";
-import allReducers from "./reducer";
+import allReducers from "./js/reducer/index";
 import { createStore, applyMiddleware } from "redux";
 import { PersistGate } from 'redux-persist/es/integration/react'
 import { persistStore } from 'redux-persist';
 import { composeWithDevTools } from 'redux-devtools-extension';
 /* Middleware */
 import thunk from "redux-thunk";
-
-
-//import * as serviceWorker from './serviceWorker';
-import Home from './pages/home'
-import Login from './pages/login'
-import Register from './pages/Register'
-
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import './index.css';
+import Home from './js/pages/home'
+import Login from './js/pages/login'
+import Register from './js/pages/Register'
 
 
 let order = [thunk];
@@ -29,22 +27,6 @@ const LoadingStoreFromLocalStorage = () => {
 }
 const onBeforeLift = () => {
     // take some action before the gate lifts
-}
-
-
-/**
- * Registering Our Service Worker
- */
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./serviceWorker')
-            .then(registration => {
-                console.log('SW registered: ', registration);
-            })
-            .catch(registrationError => {
-                console.log('SW registration failed: ', registrationError);
-            });
-    });
 }
 
 const isAuthenticatedArr = {
@@ -80,8 +62,8 @@ const routing = (
             <Router >
                 <div>
                     {nnnav(false)}
-                    <Route path="/remainder/login" component={Login} />
-                    <Route path="/remainder/register" component={Register} />
+                    <Route exact path="/remainder/login" component={Login} />
+                    <Route exact path="/remainder/register" component={Register} />
                     <Route
                         exact
                         path="/remainder"
@@ -94,11 +76,13 @@ const routing = (
     </Provider>
 );
 
+const wrapper = document.getElementById("app");
+wrapper ?
+    ReactDOM.render(routing, wrapper) : false;
 
-
-ReactDOM.render(routing, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-//serviceWorker.unregister();
+// const wrapper = document.getElementById("app");
+// wrapper ?
+//     ReactDOM.render(<Router >
+//         <Route exact path="/" component={FormContainer} />
+//         <Route exact path="/second" component={SecondContainer} />
+//     </Router >, wrapper) : false;

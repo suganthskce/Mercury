@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginContainer from './../containers/login';
+import LoginContainer from './../containers/login/index.jsx';
 
 const login = () => {
     return <LoginContainer />

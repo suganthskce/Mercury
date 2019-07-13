@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import './style.css';
-import { fetchEvents } from "./../../actions/eventActions";
+import { fetchEvents } from "../../actions/eventActions";
 
 class EventList extends Component {
     constructor(props) {
@@ -15,7 +15,7 @@ class EventList extends Component {
         this.props.fetchEvents();
     }
 
-    componentWillReceiveProps = (newProps) => {
+    componentWillReceiveProps(newProps) {
     }
 
     render() {

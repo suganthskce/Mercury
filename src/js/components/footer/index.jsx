@@ -12,7 +12,7 @@ class Footer extends Component {
     componentWillMount() {
     }
 
-    componentWillReceiveProps = (newProps) => {
+    componentWillReceiveProps(newProps) {
     }
 
     render() {

@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import './styles.css';
-import Notifications, { notify } from 'react-notify-toast';
-import { bindActionCreators } from "redux";
-import { loginUser } from "../../actions/userActions";
-import { getAuthorizedToken, errorToaster } from '../../utils/utils';
 
 class Header extends Component {
     constructor(props) {
@@ -17,7 +13,7 @@ class Header extends Component {
     componentWillMount() {
     }
 
-    componentWillReceiveProps = (newProps) => {
+    componentWillReceiveProps(newProps) {
     }
 
     render() {

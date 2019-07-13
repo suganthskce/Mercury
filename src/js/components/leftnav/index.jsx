@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import './style.css';
-import Notifications, { notify } from 'react-notify-toast';
-import { bindActionCreators } from "redux";
-import { loginUser } from "./../../actions/userActions";
-import { getAuthorizedToken, errorToaster } from './../../utils/utils';
-import Header from '../header';
 
 class LeftNav extends Component {
     constructor(props) {
@@ -18,7 +13,7 @@ class LeftNav extends Component {
     componentWillMount() {
     }
 
-    componentWillReceiveProps = (newProps) => {
+    componentWillReceiveProps(newProps) {
     }
 
     render() {

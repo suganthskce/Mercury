@@ -5,7 +5,7 @@ import Notifications, { notify } from 'react-notify-toast';
 import { bindActionCreators } from "redux";
 import { loginUser } from "./../../actions/userActions";
 import { getAuthorizedToken, errorToaster } from './../../utils/utils';
-import InputBox from './../../components/inputBox';
+import InputBox from './../../components/inputBox/index.jsx';
 
 class Login extends Component {
     constructor(props) {
@@ -18,7 +18,7 @@ class Login extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange = (key, value) => {
+    handleChange(key, value) {
         this.setState({
             [key]: value
         });
@@ -31,7 +31,7 @@ class Login extends Component {
         }
     }
 
-    componentWillReceiveProps = (newProps) => {
+    componentWillReceiveProps(newProps) {
         if (newProps.success) {
             window.location.href = "/remainder";
         } else if (newProps.errors.length > 0) {
@@ -42,7 +42,7 @@ class Login extends Component {
         }
     }
 
-    handleSubmit = () => {
+    handleSubmit() {
         const { username = '', password = '' } = this.state;
         if (!username || !password) {
             alert("Enter username and password");
