@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import './style.css';
 import { fetchEvents } from "./../../actions/eventActions";
 import Event from './event'
-import Modal from 'react-responsive-modal';
+import ModalView from './../common/Popup';
 
 class EventList extends Component {
     constructor(props) {
@@ -38,13 +38,14 @@ class EventList extends Component {
                 {events.map(event => {
                     return <Event data={event} actionHandler={this.doAction} />;
                 })}
-                <Modal classNames={{ modal: "modal_class" }} open={open} onClose={this.onCloseModal} center>
+                <ModalView
+                    classNames={"modal_container"}
+                    openstatus={open} onClose={this.onCloseModal}
+                >
                     <Fragment>
-                        <div className="modal_container">
-                            ASDASDASD
-                        </div>
+                        ASDASDASD
                     </Fragment>
-                </Modal>
+                </ModalView>
             </div>
         );
     }

@@ -47,6 +47,5 @@ i:hover::before{
 
 
   .modal_container{
-    min-height: 200px;
     min-width: 500px;
   }

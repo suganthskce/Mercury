@@ -23,6 +23,7 @@ export default function user(state = defaultState, action) {
             const { payload } = action.payload;
             const { userInfo } = payload;
             const { token = '' } = userInfo;
+            //alert(token);
             saveToCookie(token);
             return {
                 ...state,

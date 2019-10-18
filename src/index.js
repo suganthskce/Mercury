@@ -17,6 +17,7 @@ import thunk from "redux-thunk";
 import Home from './pages/home'
 import Login from './pages/login'
 import Register from './pages/Register'
+import Dummy from './pages/dummy'
 
 
 
@@ -54,7 +55,7 @@ const isAuthenticatedArr = {
 };
 const isAuthenticated = props => {
     if (Cookie.load("uuid") == undefined) {
-        //alert("UUID not defined");
+        alert("UUID not defined");
         //Cookie.save('referrer', window.location.pathname);
         window.location.href = '/remainder/login/';
     }
@@ -83,6 +84,7 @@ const routing = (
                     {nnnav(false)}
                     <Route path="/remainder/login" component={Login} />
                     <Route path="/remainder/register" component={Register} />
+                    <Route path="/" component={Dummy} />
                     <Route
                         exact
                         path="/remainder"

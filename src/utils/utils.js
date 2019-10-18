@@ -4,6 +4,7 @@ import jwtDecode from "jwt-decode";
 import _ from 'lodash';
 import { notify } from 'react-notify-toast';
 import moment from "moment";
+import config from './../config/envconfig';
 
 
 export const getUserInfoFromJwt = () => {
@@ -27,9 +28,7 @@ export const saveToCookie = (token, removeOld) => {
     const decodeJWT = jwtDecode(token.replace("Bearer ", ""));
     const { exp = "" } = decodeJWT;
     const expires = new Date((exp - 300) * 1000);
-    alert(JSON.stringify(decodeJWT));
-    alert(expires);
-    const cookieDomain = 'technogramsolutions.com';
+    const { cookieDomain = '' } = config;
     Cookie.save("uuid", token, { path: "/", expires, domain: cookieDomain });
     if (removeOld) Cookie.remove(removeOld, { path: '/', domain: cookieDomain });
 };

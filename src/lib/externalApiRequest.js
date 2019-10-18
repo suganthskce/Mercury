@@ -103,17 +103,16 @@ const sanitizeResponse = (response = {}) => {
             }
             errorData = Object.assign({}, data);
             errorData.error = true;
-            setTimeout(() => {
-                if (!isEmpty(data.errors) && data.errors[0].errCode == "403") {
-                    // const cookieDomain = 'localhost';
-                    // Cookie.remove("uuid", { path: '/', domain: cookieDomain });
-                    // Cookie.remove("SBT", { path: '/', domain: cookieDomain });
-                    // sessionStorage.clear();
-                    // alert("WSJSH");
-                    // window.location.href = '/remainder/login/';
-                }
-            }, 2000)
-            console.log("errorData", errorData);
+            // setTimeout(() => {
+            //     if (!isEmpty(data.errors) && data.errors[0].errCode == "403") {
+            //         // const cookieDomain = 'localhost';
+            //         // Cookie.remove("uuid", { path: '/', domain: cookieDomain });
+            //         // Cookie.remove("SBT", { path: '/', domain: cookieDomain });
+            //         // sessionStorage.clear();
+            //         // alert("WSJSH");
+            //         // window.location.href = '/remainder/login/';
+            //     }
+            // }, 2000)
             return errorData;
             //handle false condition like 403, 400, 500, 502
         }
